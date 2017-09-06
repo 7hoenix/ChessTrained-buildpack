@@ -8,9 +8,6 @@ pp() {
   echo "===>" $*
 }
 
-pp Building ChessTrained...
-
-
 pp Installing Linux dependencies...
 
 curl -sL https://deb.nodesource.com/setup_6.x | bash -

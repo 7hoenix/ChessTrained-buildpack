@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+set -ex
+
+pp() {
+  echo "---" $* "---"
+}
+
+pp Building ChessTrained...
+
+
+pp Installing Linux dependencies...
+
+curl -sL https://deb.nodesource.com/setup_6.x | bash -
+apt-get update -y
+apt-get install -y esl-erlang elixir python-pip python-dev stockfish nodejs
+mix local.hex --force  && mix local.rebar --force
+
+
+pp Installing Python dependencies
+
+pip install --upgrade setuptools
+pip install --upgrade distribute
+pip install -r requirements.txt
+
+
+pp Installing Elixir dependencies...
+
+mix deps.get
+
+
+pp Compiling static assets...
+
+pushd ./assets
+npm install
+npm run make
+npm run deploy
+popd
+mix phx.digest
+
+
+pp Compiling Elixir...
+
+mix compile --force
+
+
+pp Done.

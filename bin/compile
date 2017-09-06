@@ -5,7 +5,7 @@ set -ex
 cd $1
 
 pp() {
-  echo "---" $* "---"
+  echo "===>" $*
 }
 
 pp Building ChessTrained...
@@ -16,14 +16,15 @@ pp Installing Linux dependencies...
 curl -sL https://deb.nodesource.com/setup_6.x | bash -
 apt-get update -y
 apt-get install -y esl-erlang elixir python-pip python-dev stockfish nodejs
-mix local.hex --force  && mix local.rebar --force
+mix local.hex --force
+mix local.rebar --force
 
 
 pp Installing Python dependencies
 
 pip install --upgrade setuptools
 pip install --upgrade distribute
-pip install -r requirements.txt
+pip install --requirement requirements.txt
 
 
 pp Installing Elixir dependencies...

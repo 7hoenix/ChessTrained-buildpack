@@ -5,7 +5,7 @@ set -ex
 cd $1
 
 pp() {
-  echo "===>" $*
+  echo '----->' $*
 }
 
 pp Installing Linux dependencies...

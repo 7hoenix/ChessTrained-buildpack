@@ -12,7 +12,7 @@ pp Installing Linux dependencies...
 
 curl -sL https://deb.nodesource.com/setup_6.x | bash -
 apt-get update -y
-apt-get install -y esl-erlang elixir python-pip python-dev stockfish nodejs
+apt-get install -y esl-erlang elixir python-pip python-dev stockfish nodejs postgresql
 mix local.hex --force
 mix local.rebar --force
 
@@ -43,5 +43,10 @@ pp Compiling Elixir...
 
 mix compile --force
 
+
+pp Configuring Postgres...
+
+pp TODO
+exit 1
 
 pp Done.
